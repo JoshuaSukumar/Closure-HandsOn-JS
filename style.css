@@ -1,0 +1,44 @@
+* {
+   margin: 0px;
+   padding: 0px;
+   box-sizing: border-box;
+}
+
+body {
+   background: cornflowerblue;
+   font-family:'Times New Roman', Times, serif;
+}
+
+h1 {
+   text-align: center;
+   padding: 20px;
+   font-size: 35px;
+}
+
+section {
+   background: white;
+   width: 85%;
+   margin: 50px auto;
+   padding: 10px;
+}
+
+h2 {
+   margin: 40px;
+   font-size: 30px;
+}
+
+pre {
+   border-radius: 50px;
+   width: 85%;
+   margin: auto;
+   padding-top: 20px;
+   font-size: 20px;
+}
+
+p {
+   width: 85%;
+   margin: 20px auto;
+   font-size: 22px;
+   padding:20px 100px;
+   color: green;
+}

@@ -1,0 +1,143 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+   <meta charset="UTF-8">
+   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+   <link rel="stylesheet" href="style.css">
+   <title>Document</title>
+</head>
+<body>
+   
+   <h1>Javascript - "Closures"</h1>
+
+   <section>
+      <h2>Question 1 :- </h2>
+      <pre>
+         function counter(){
+            var counter = 0;
+            function IncreaseCounter() {
+               return counter += 1;
+            };
+            return IncreaseCounter;
+         }
+         var counter = counter();
+         alert(counter());
+         alert(counter());
+         alert(counter());
+         alert(counter());
+      </pre>
+      <p>Closure is a feature where an inner function has the ability to access it's parent variables. So each time we call counter() the inner function IncreaseCounter() will increase the variable counter by 1 and prompt the result in the alert box. <br> output :- Prompt box will prompt the value each time it increase the value<br>1 <br>2 <br> 3 <br> 4</p>
+   </section>
+
+   <section>
+      <h2>Question 2 :- </h2>
+      <pre>
+         let count = 0; 
+         (function () {
+            if (count === 0) {
+               let count = 1;
+               console.log(count);
+            }
+            console.log(count); 
+         })();
+      </pre>
+      <p>Since the condition inside the function is strictly true then we are redeclaring and initializing the value to the variable count to 1. So it will first result in the variable count = 1. Then let count = 1 is a blocked scope and cannot be used outside the block the value for count will become 0 and result in 0 <br><br> output:- <br>1 <br>2</p>
+   </section>
+
+   <section>
+      <h2>Question 3 :- </h2>
+      <pre>
+         for (var i = 0; i < 3; i++) {
+            setTimeout(function log() {
+               console.log(i); // What is logged?
+            }, 1000);
+         }
+      </pre>
+      <p>So here var is used for the variable i since var is a functional scope so it is shared among the setTimeout function. setTimeout execute the program after a period of time in this case (1 second) by the time setTimeout get's ready the for loop has already run three times and the final value for i is 3. So the setTimeout gets the value of i = 3 and runs it for three times <br> <br> output:- <br>3 <br>3 <br>3</p>
+   </section>
+
+   <section>
+      <h2>Question 4 :- Write a code to calculate area of a rectangle using inner function. In this case outer function should accept parameter length and inner function should accept parameter breadth.</h2>
+      <pre>
+         function outer(length) {
+            function inner(breath){
+               return "Area of rectangle is "+ length*breath;
+            }
+            return inner(10);
+         }
+         let rectangle = outer(5);
+         console.log(rectangle);
+      </pre>
+      <p>output:- Area of rectangle is 50</p>
+   </section>
+
+   <section>
+      <h2>Question 5 :- Take a variable in outer function and create an inner function to increase the counter every time it is called.</h2>
+      <pre>
+         function outerfun() {
+            let count = 0;
+            function innerfun(){
+               count++;
+               console.log(count);
+            }
+            return innerfun;
+         }
+         let counter2 = outerfun();
+         counter2();  //output:- 1
+         counter2();  //output:- 2
+         counter2();  //output:- 3
+         counter2();  //output:- 4
+      </pre>
+      <p>output:- <br>1 <br>2 <br>3 <br>4 <br>since I am calling it four times it will increment the value till 4</p>
+   </section>
+
+   <section>
+      <h2>Question 6 :- </h2>
+      <pre>
+         var a = 12;
+         (function () {
+            alert(a);
+         })();
+      </pre>
+      <p>Whenever the function is called an alert prompt will appear with the value of the variable a that is 12. <br> <br> output:- Prompt box will have the value 12 in it</p>
+   </section>
+
+   <section>
+      <h2>Question 7 :- </h2>
+      <pre>
+         var a = 10;
+         var x = (function () {
+            var a = 12;
+            return function () {
+               alert(a);
+            };
+         })();
+         x();
+      </pre>
+      <p>Here the variable a is declared outside with the value 10, but inside the function we again redeclared the variable a and initilized with the new value 12 so the alert will prompt a box with the value of 12 which is a new value of a with in the function.<br> <br>output:- Prompt box will have the value 12 in it</p>
+   </section>
+
+   <section>
+      <h2>Question 8 :- </h2>
+      <pre>
+         var globalVar = "xyz";
+         (function outerFunc(outerArg) {
+            var outerVar = 'a';
+            (function innerFunc(innerArg) {
+               var innerVar = 'b';
+               console.log("outerArg = " + outerArg + "\n" + "innerArg = " + <br>                     innerArg + "\n" + "outerVar <br>                     = " + outerVar + "\n" + "innerVar <br>                     = " + innerVar + "\n" + <br>                     "globalVar = " + globalVar);
+    
+            })(456);
+         })(123);
+      </pre>
+      <p>Because of Closure feature the inner function has the ability to access the variables of the outer function. So the innerFunc() can access the variables of outerFunc() as well as globalVar resulting in the output <br> <br> output:- <br>
+      outerArg = 123<br>
+      innerArg = 456<br>
+      outerVar = a<br>
+      innerVar = b<br>
+      globalVar = xyz</p>
+   </section>
+
+   <script src="./script.js"></script>
+</body>
+</html>
